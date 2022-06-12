@@ -73,3 +73,4 @@ USER haproxy
 ENTRYPOINT ["docker-entrypoint.sh"]
 
 CMD ["haproxy", "-f", "/etc/haproxy/haproxy.cfg"]
+
