@@ -63,8 +63,7 @@ RUN set -eux; \
         # chown -R haproxy.haproxy /usr/local/haproxy; \
         \
         ln -s /usr/local/haproxy/sbin/haproxy /usr/sbin/haproxy; \
-        haproxy -v; \
-        echo 1
+        haproxy -v
 
 EXPOSE 9999
 
