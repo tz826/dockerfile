@@ -11,6 +11,7 @@ COPY haproxy-${VERSION}.tar.gz /haproxy.tar.gz
 
 RUN set -eux; \
         sed -r -e "s@(^.*//).*org(.*$)@\1${REPO_URL}\2@g" -i /etc/apk/repositories; \
+        apk update --no-cache; \
         apk add --no-cache --virtual .build-deps \
             gcc \
             libc-dev \
@@ -48,6 +49,7 @@ COPY docker-entrypoint.sh /usr/bin
 
 RUN set -eux; \
         sed -r -e "s@(^.*//).*org(.*$)@\1${REPO_URL}\2@g" -i /etc/apk/repositories; \
+        apk update --no-cache; \
         run_deps="$( \
             scanelf --needed --nobanner --format '%n#p' --recursive /usr/local/haproxy/sbin/haproxy \
                 | tr ',' '\n' \
