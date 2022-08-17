@@ -6,7 +6,7 @@ set -eux
 # ADMIN_USER='admin'
 
 sed -r \
-    -e "s#ldap://localhost:389$#${LDAP_URL}#g" \
+    -e "s#ldap://localhost:389\$#${LDAP_URL}#g" \
     -e "s/,dc=my-domain,dc=com$/,${INITIAL_DN}/g" \
     -e "s/dc=yourdomain,dc=org$/${INITIAL_DN}/g" \
     -e "s/cn=Manager/cn=${ADMIN_USER}/g" \
