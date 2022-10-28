@@ -1,8 +1,7 @@
 .vscode
 *.code-workspace
 
-
 *test*
 
-
+*.tar.*
 
