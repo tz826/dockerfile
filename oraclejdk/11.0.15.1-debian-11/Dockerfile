@@ -1,4 +1,4 @@
-FROM docker.io/noi1031/gosu:1.14-debian-11
+FROM registry.cn-hangzhou.aliyuncs.com/noise131/gosu:1.14-debian-11
 
 ADD jdk*.tar.gz /usr/local
 
