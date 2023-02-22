@@ -57,11 +57,12 @@ RUN set -eux; \
 
 FROM docker.io/library/debian:11 as running
 
-COPY sources.list /etc/apt/sources.list
 COPY --from=build /usr/local/nginx /usr/local/nginx
 COPY --from=build /etc/nginx /etc/nginx
+COPY sources.list /etc/apt/sources.list
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY conf.d /etc/nginx/conf.d
+COPY docker-entrypoint.sh /
 
 RUN set -eux; \
             \
@@ -77,6 +78,12 @@ RUN set -eux; \
             \
         apt-get -y install curl iputils-ping net-tools procps; \
             \
-        rm -rf /var/lib/apt/lists/*
+        rm -rf /var/lib/apt/lists/*; \
+            \
+        chmod +x /docker-entrypoint.sh
 
-ENTRYPOINT [ "nginx", "-g", "daemon off;" ]
+EXPOSE 80
+
+ENTRYPOINT [ "/docker-entrypoint.sh" ]
+
+CMD [ "nginx", "-g", "daemon off;" ]

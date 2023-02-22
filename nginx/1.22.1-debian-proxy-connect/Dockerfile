@@ -4,16 +4,20 @@ ENV NGX_VERSION "1.22.1"
 
 COPY sources.list /etc/apt/sources.list
 ADD nginx-${NGX_VERSION}.tar.gz /
+ADD ngx_http_proxy_connect_module-0.0.3.tar.gz /
 
 RUN set -eux; \
         apt-get update; \
         apt-get install -y gcc g++ make libpcre3-dev libssl-dev zlib1g-dev libxml2-dev libxslt1-dev; \
-        apt-get install -y pax-utils; \
+        apt-get install -y pax-utils patch; \
             \
         groupadd --system --gid 999 nginx; \
         adduser --system --shell /usr/sbin/nologin --no-create-home --uid 999 --gid 999 --disabled-login nginx; \
             \
         cd nginx-${NGX_VERSION}; \
+            \
+        patch -p1 </ngx_http_proxy_connect_module-0.0.3/patch/proxy_connect_rewrite_102101.patch; \
+            \
         ./configure \
             --prefix=/usr/local/nginx \
             --modules-path=/usr/local/nginx/modules \
@@ -47,7 +51,8 @@ RUN set -eux; \
             --with-stream \
             --with-stream_realip_module \
             --with-stream_ssl_module \
-            --with-stream_ssl_preread_module; \
+            --with-stream_ssl_preread_module \
+            --add-dynamic-module=/ngx_http_proxy_connect_module-0.0.3; \
         make; \
         make install
 
@@ -79,7 +84,7 @@ RUN set -eux; \
             \
         chmod +x /docker-entrypoint.sh
 
-EXPOSE 80
+EXPOSE 3128
 
 ENTRYPOINT [ "/docker-entrypoint.sh" ]
 
