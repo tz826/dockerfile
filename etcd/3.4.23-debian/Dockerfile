@@ -5,6 +5,9 @@ COPY sources.list-zkd /etc/apt/sources.list
 COPY etcd_bin/ /usr/local/bin
 COPY docker-entrypoint.sh /usr/local/bin
 
+# 默认 etcdctl api 版本
+ENV ETCDCTL_API=3
+
 RUN set -eux; \
             \
         apt-get update; \

@@ -2,11 +2,11 @@
 
 set -e
 
-test -f /etc/etcd/etcd.conf || ( echo "etcd config file not found !" && echo 1 )
-
 if [ "${1}" != 'etcd' ]; then
     exec "$@"
 fi
+
+test -f /etc/etcd/etcd.conf || ( echo "etcd config file not found !" && echo 1 )
 
 if [ -z "${ETCD_DATA_DIR}" ];then
     DATA_DIR=$( sed -nr "/^ETCD_DATA_DIR/ s/^.*\"(.*)\".*$/\1/g p" /etc/etcd/etcd.conf )
