@@ -67,8 +67,8 @@ RUN set -eux; \
         adduser --system --shell /usr/sbin/nologin --no-create-home --uid 999 --gid 999 --disabled-login nginx; \
             \
         mkdir -p /var/log/nginx; \
-        ln -sv /dev/stdout /var/log/nginx/access.log; \
-        ln -sv /dev/stderr /var/log/nginx/error.log; \
+        ln -svf /dev/stdout /var/log/nginx/access.log; \
+        ln -svf /dev/stderr /var/log/nginx/error.log; \
         ln -sv /usr/local/nginx/sbin/nginx /usr/sbin; \
             \
         apt-get update; \
