@@ -1,0 +1,11 @@
+# 创建一个用户
+dn: cn=test,ou=People,==LDAP_BASE_DN==
+objectClass: inetOrgPerson
+cn: test
+sn: test
+
+# 创建一个支持 memberof 的用户组 ( groupOfNames 对象的用户组 ) 并添加 cn=test,ou=People,dc=noise,dc=com 用户为组成员 ( memberof 模块的支持 )
+dn: cn=master,ou=Group,==LDAP_BASE_DN==
+objectClass: groupOfNames
+cn: master
+member: cn=test,ou=People,==LDAP_BASE_DN==
