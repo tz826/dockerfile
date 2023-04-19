@@ -12,6 +12,17 @@ mkdir -p ./src
 cd ./src
 
 git clone "$GIT_URL"
+cd "$PROJECT_DIR"
+
+sed -i.bak -r \
+    -e "s/getTransferredTps/getTransferedTps/g" \
+    src/main/java/org/apache/rocketmq/exporter/model/BrokerRuntimeStats.java
+
+# sed -i.bak -r \
+#     -e "s/4.9.4/4.5.0/g" \
+#     pom.xml
+
+cd ../
 
 docker run --rm \
     --network=host \
@@ -31,4 +42,5 @@ cp -a ./src/"$PROJECT_DIR"/src/main/resources/application.yml ./
 
 sed -r -i.bak \
     -e "s/127.0.0.1:9876/\${NAMESRV:127.0.0.1:9876}/g" \
+    -e "s/4_9_4/4_5_0/g" \
     ./application.yml
