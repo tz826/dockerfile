@@ -17,4 +17,4 @@ ENTRYPOINT [ "tini", "--" ]
 #   容器管理工具发送的停止信号时 /bin/bash 不会做任何操作 ( 也不会将停止信号转发给子进程 )，
 #   实际使用的进程为 tail -f /dev/null ( /bin/bash 的子进程 )，会导致容器管理工具等待超时后使
 #   用 SIGKILL(9) 强制杀死容器的 pid 1 进程， /bin/bash 被杀死之后子进程 tail 也会结束)
-CMD [ "/bin/bash", "-c", "tail -f /dev/null" ]
+# CMD [ "/bin/bash", "-c", "tail -f /dev/null" ]
