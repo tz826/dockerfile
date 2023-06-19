@@ -2,7 +2,9 @@
 
 该镜像中包含 k8s、容器环境下 cicd 的常用工具套件 ( docker、podman、kubectl 等 )
 
-:warning: `kubectl`、`docker|podman` 是所有 tag 镜像中的默认工具，基础容器工具 ( `docker|podman` ) 根据镜像 tag 区分，tag 中出现 podman 的其基础容器工具即为 podman，如果 tag 中没有出现 podman 的其基础容器工具为 docker
+:warning: `kubectl`、`docker|podman` 是所有 tag 镜像中的默认工具，基础容器工具 ( `docker|podman` ) 根据镜像 tag 区分，tag 中出现 podman 的其基础容器工具即为 podman，如果 tag 中没有出现 podman 的其基础容器工具为 docker 
+
+Dockerfile 地址 : `https://github.com/noise131/dockerfile/tree/main/cicd-tools` 
 
 ## 镜像说明
 
@@ -50,3 +52,4 @@ podman run -it --rm \
 >     "Arn": "arn:aws:iam::xxxxxxxx:user/xxxx"
 > }
 > ```
+
