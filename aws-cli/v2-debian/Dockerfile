@@ -1,5 +1,7 @@
 FROM debian:11
 
+COPY sources.list-zkd /etc/apt/sources.list
+
 RUN set -eux; \
         \
     apt-get update; \
@@ -7,7 +9,7 @@ RUN set -eux; \
     curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"; \
     unzip awscliv2.zip; \
     ./aws/install; \
-    rm -rf awscliv2.zip;
+    rm -rf aws*;
 
 ###
 # 构建命令
