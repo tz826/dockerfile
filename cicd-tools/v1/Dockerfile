@@ -6,7 +6,7 @@ COPY sources.list-zkd /etc/apt/sources.list
 RUN set -eux; \
             \
         apt-get update; \
-        apt-get install -y curl; \
+        apt-get install -y curl git; \
             \
         curl -SL -o "docker-20.10.17.tgz" "https://download.docker.com/linux/static/stable/x86_64/docker-20.10.17.tgz"; \
         tar -xvf docker*.tgz; \

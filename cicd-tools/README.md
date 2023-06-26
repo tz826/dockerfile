@@ -2,7 +2,7 @@
 
 该镜像中包含 k8s、容器环境下 cicd 的常用工具套件 ( docker、podman、kubectl 等 )
 
-:warning: `kubectl`、`docker|podman` 是所有 tag 镜像中的默认工具，基础容器工具 ( `docker|podman` ) 根据镜像 tag 区分，tag 中出现 podman 的其基础容器工具即为 podman，如果 tag 中没有出现 podman 的其基础容器工具为 docker 
+:warning: `kubectl`、`docker|podman`、`git` 是所有 tag 镜像中的默认工具，基础容器工具 ( `docker|podman` ) 根据镜像 tag 区分，tag 中出现 podman 的其基础容器工具即为 podman，如果 tag 中没有出现 podman 的其基础容器工具为 docker 
 
 Dockerfile 地址 : https://github.com/noise131/dockerfile/tree/main/cicd-tools
 
@@ -15,7 +15,7 @@ Dockerfile 地址 : https://github.com/noise131/dockerfile/tree/main/cicd-tools
 
 镜像版本说明
 
-- `v1` : 工具版本如下 `podman_v3.4.4`、`kubectl_v1.26.3`、`aws-cli_v2`、`docker_20.10.x` ( 仅列出可能存在的工具版本，具体工具是否存在于镜像根据 tag 决定 )
+- `v1` : 工具版本如下 `podman_v3.4.4`、`kubectl_v1.26.3`、`aws-cli_v2`、`docker_20.10.x`、`git_2.30.2` ( 仅列出可能存在的工具版本，具体工具是否存在于镜像根据 tag 决定 )
 
 ## 镜像使用示例 
 

@@ -6,7 +6,7 @@ COPY sources.list-zkd /etc/apt/sources.list
 RUN set -eux; \
             \
         apt-get update; \
-        apt-get install -y curl; \
+        apt-get install -y curl git; \
             \
         curl -SL -o "podman-remote-static.tar.gz" "https://github.com/containers/podman/releases/download/v3.4.4/podman-remote-static.tar.gz"; \
         tar -xvf podman*; \

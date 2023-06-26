@@ -1,4 +1,4 @@
-FROM docker.io/library/debian:11
+FROM noi1031/cicd-tools:v1-podman
 
 # 中科大镜像源出问题时可以使用阿里云镜像源
 COPY sources.list-zkd /etc/apt/sources.list
@@ -6,16 +6,7 @@ COPY sources.list-zkd /etc/apt/sources.list
 RUN set -eux; \
             \
         apt-get update; \
-        apt-get install -y curl zip less; \
-            \
-        curl -SL -o "podman-remote-static.tar.gz" "https://github.com/containers/podman/releases/download/v3.4.4/podman-remote-static.tar.gz"; \
-        tar -xvf podman*; \
-        rm -rf *.gz; \
-        mv podman* /usr/bin/podman; \
-        chmod +x /usr/bin/podman; \
-            \
-        curl -SL -o "/usr/bin/kubectl" "https://dl.k8s.io/release/v1.26.3/bin/linux/amd64/kubectl"; \
-        chmod +x /usr/bin/kubectl; \
+        apt-get install -y curl git zip less; \
             \
         curl -SL -o "awscliv2.zip" "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip"; \
         unzip awscliv2.zip; \
